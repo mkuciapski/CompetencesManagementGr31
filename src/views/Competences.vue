@@ -1,26 +1,26 @@
-<script setup lang="ts">
-import { onMounted, onUpdated, ref } from 'vue'
-
-const headerTitle = ref('<i>Competences</i>')
-setTimeout(() => {
-  headerTitle.value = 'I love reactivity'
-}, 4000)
-
-//#region EVENTS
-onUpdated(() => {
-  console.log('Updated - rerendered )')
-})
-
-onMounted(() => {
-  console.log('Mounted - component mounted (Jquery)')
-})
-
-console.log('Created - after created (AJAX)')
-//#endregion
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <h1><span v-html="headerTitle"></span></h1>
+  <h2>Competences</h2>
+
+  <div class="card bg-base-100 w-96 shadow-sm">
+    <figure>
+      <img
+        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+        alt="Shoes"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">Card Title</h2>
+      <p>
+        A card component has a figure, a body part, and inside body there are title and actions
+        parts
+      </p>
+      <div class="card-actions justify-end">
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>
