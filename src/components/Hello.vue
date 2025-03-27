@@ -18,6 +18,11 @@ import { lectures as _subjects } from '@/data/lectures'
 const _selectedSubjects = ref(['Ang'])
 const _score = ref(0)
 
+const _headerStyle = ref({ Color: 'greenyellow' })
+setTimeout(() => {
+  _headerStyle.value.Color = 'blue'
+}, 4000)
+
 //#region EVENTS
 onBeforeMount(() => {
   console.log('Before Mount!')
@@ -50,6 +55,8 @@ onErrorCaptured(() => {
 </script>
 
 <template>
+  <h1 class="header">Component heading</h1>
+
   <pre>{{ StudentsSecondYear }}</pre>
 
   <div>Polska - X {{ _score }}:0</div>
@@ -63,4 +70,11 @@ onErrorCaptured(() => {
   {{ _selectedSubjects }}
 </template>
 
-<style scoped></style>
+<style scoped>
+.header {
+  color: v-bind('_headerStyle.Color');
+}
+h1 {
+  color: red;
+}
+</style>

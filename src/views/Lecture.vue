@@ -37,10 +37,27 @@ setTimeout(() => {
 }, 5000)
 
 const { LastName } = _userRef.value
+
+const active = ref('active')
+setTimeout(() => {
+  active.value = 'super-active'
+}, 5000)
+
+// COUNTER
+const _counter = ref(0)
+
+function increment() {
+  _counter.value++
+}
 </script>
 
 <template>
-  <div>
+  <h1>Dzisiaj Rady: {{ _counter }}</h1>
+  <div
+    @click="() => _counter++"
+    :style="{ display: ['webkit-box', 'ms-flexbox', 'flex'] }"
+    :class="[{ active: _userRef.LastName.startsWith('K') }]"
+  >
     <img :src="logo" width="100" height="100" />
     <h1>
       {{ LastName }}
@@ -52,4 +69,12 @@ const { LastName } = _userRef.value
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.active {
+  background-color: yellow;
+}
+
+.super-active {
+  background-color: rgb(255, 149, 0);
+}
+</style>
