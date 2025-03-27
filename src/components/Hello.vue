@@ -23,6 +23,13 @@ setTimeout(() => {
   _headerStyle.value.Color = 'blue'
 }, 4000)
 
+// setTimeout(() => {
+//   _students.value[0].Grade = Math.floor(Math.random() * 3) + 2
+//   _students.value[1].Grade = Math.floor(Math.random() * 3) + 2
+// }, 3000)
+
+const _studentsDataChanged = ref(false)
+
 //#region EVENTS
 onBeforeMount(() => {
   console.log('Before Mount!')
@@ -55,8 +62,18 @@ onErrorCaptured(() => {
 </script>
 
 <template>
-  <h1 class="header">Component heading</h1>
+  <div>
+    <h1 class="header">STUDENTS DATA CHANGED: {{ _studentsDataChanged }}</h1>
+  </div>
 
+  <h1>Component heading</h1>
+
+  <button class="btn" @click.ctrl.exact="console.log('button exact')">Dont click</button>
+  <input
+    @keyup.ctrl.exact="console.log('exact')"
+    @keyup.page-down="console.log('page-down')"
+    value="test page down"
+  />
   <pre>{{ StudentsSecondYear }}</pre>
 
   <div>Polska - X {{ _score }}:0</div>

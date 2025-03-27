@@ -27,13 +27,13 @@ const _countReactive = reactive({ count: 0 })
 const _userReactive = reactive({ FirtName: 'Michał', LastName: 'Kuciapski' })
 
 _countRef.value = 9
-_userRef.value.LastName = 'Ronaldo'
+_userRef.value.LastName = 'KRonaldo'
 
 _countReactive.count = 9
-_userReactive.LastName = 'Ronaldo'
+_userReactive.LastName = 'KRonaldo'
 
 setTimeout(() => {
-  _userRef.value = { FirtName: 'Michał', LastName: '2222222' }
+  _userRef.value = { FirtName: 'KMichał', LastName: 'K2222222' }
 }, 5000)
 
 const { LastName } = _userRef.value
@@ -45,27 +45,39 @@ setTimeout(() => {
 
 // COUNTER
 const _counter = ref(0)
-
-function increment() {
-  _counter.value++
-}
 </script>
 
 <template>
-  <h1>Dzisiaj Rady: {{ _counter }}</h1>
   <div
-    @click="() => _counter++"
-    :style="{ display: ['webkit-box', 'ms-flexbox', 'flex'] }"
-    :class="[{ active: _userRef.LastName.startsWith('K') }]"
+    style="overflow: auto"
+    @scroll.passive.prevent="
+      (event) => {
+        console.log(event)
+        event.preventDefault()
+      }
+    "
   >
-    <img :src="logo" width="100" height="100" />
-    <h1>
-      {{ LastName }}
-    </h1>
+    <h1>Dzisiaj Rady: {{ _counter }}</h1>
+    {{ _userRef.LastName.startsWith('K') ? true : false }}
+    <div
+      @click="
+        (event) => {
+          // console.log(event)
+          _counter++
+        }
+      "
+      :class="[_userRef.LastName.startsWith('K') ? active : '']"
+      :style="{ display: ['webkit-box', 'ms-flexbox', 'flex'] }"
+    >
+      <img :src="logo" width="100" height="100" />
+      <h1>
+        {{ LastName }}
+      </h1>
 
-    <h1><span v-html="headerTitle"></span></h1>
-    {{ _userReactive.FirtName }} {{ _userRef.FirtName }}
-    <Hello v-if="_showScore" />
+      <h1><span v-html="headerTitle"></span></h1>
+      {{ _userReactive.FirtName }} {{ _userRef.FirtName }}
+      <Hello v-if="_showScore" />
+    </div>
   </div>
 </template>
 
