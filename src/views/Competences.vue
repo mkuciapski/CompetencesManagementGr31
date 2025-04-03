@@ -4,6 +4,10 @@ import { computed, ref, watch } from 'vue'
 import competences from '@/data/competences'
 //#endregion
 
+//#region STYLES
+const cardStyles = ref({ Margin: '0.25rem' })
+//#endregion
+
 //#region FILTER
 const _competences = ref(competences)
 const _searchText = ref('')
@@ -16,8 +20,7 @@ const _filteredCompetences = computed(() => {
 })
 //#endregion
 
-//#endregion DELETE
-const _deletedCompetence = ref()
+//#region DELETE
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function removeCompetence(competence: any) {
   _competences.value.splice(_competences.value.indexOf(competence), 1)
@@ -28,14 +31,6 @@ watch(_competences.value, (newList, oldList) => {
   console.log(newList, oldList)
   _showAlert.value = true
 })
-
-// setTimeout(() => {
-//   _competences.value[0].Name = 'AAAAAAAAAAAA'
-// }, 3000)
-//#endregion
-
-//#region styles binding
-const cardStyles = ref({ Margin: '0.25rem' })
 //#endregion
 </script>
 
