@@ -3,6 +3,7 @@ import { computed, ref, watch, watchEffect } from 'vue'
 //#region GENERAL
 import competences from '@/data/competences'
 import CompetenceCard from '@/components/CompetenceCard.vue'
+import MaskEditBox from '@/components/MaskEditBox.vue'
 //#endregion
 
 //#region FILTER
@@ -44,6 +45,7 @@ watch(_competences.value, (newList, oldList) => {
 </script>
 
 <template>
+  <MaskEditBox />
   <div v-show="_showAlert" role="alert" class="alert alert-warning alert-outline relative">
     <p>Competences modified</p>
     <button @click="_showAlert = false" class="btn btn-sm absolute right-0">X</button>

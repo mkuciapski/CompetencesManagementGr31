@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps(['competence'])
+defineProps<{ competence: [] }>()
 
 //#region STYLES
 const cardStyles = ref({ Margin: '0.25rem' })
