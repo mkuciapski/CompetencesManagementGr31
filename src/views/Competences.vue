@@ -2,10 +2,7 @@
 import { computed, ref, watch, watchEffect } from 'vue'
 //#region GENERAL
 import competences from '@/data/competences'
-//#endregion
-
-//#region STYLES
-const cardStyles = ref({ Margin: '0.25rem' })
+import CompetenceCard from '@/components/CompetenceCard.vue'
 //#endregion
 
 //#region FILTER
@@ -61,45 +58,9 @@ watch(_competences.value, (newList, oldList) => {
 
   <div class="flex flex-wrap justify-center">
     <template v-for="competence in _filteredCompetences" :key="competence.Id">
-      <div v-if="competence.Level" class="m-[2px] card bg-base-100 w-40 shadow-sm card-margin">
-        <div class="card-body">
-          <button
-            @click="removeCompetence(competence)"
-            class="btn btn-error btn-xs text-white font-bold w-4 h-4 absolute right-0 top-0"
-          >
-            X
-          </button>
-          <h2 class="card-title justify-center">
-            {{ competence.Name.toUpperCase() }}
-          </h2>
-          <figure>
-            <img :src="`/public/${competence.Picture}`" :alt="competence.Name" />
-          </figure>
-          <p
-            class="font-bold"
-            :class="[
-              { 'text-red-700': competence.Level < 3 },
-              { 'text-green-700': competence.Level > 3 },
-            ]"
-          >
-            Poziom: {{ competence.Level }}
-          </p>
-          <p v-if="competence.Description">Opis: {{ competence.Description }}</p>
-        </div>
-      </div>
+      <CompetenceCard :competence />
     </template>
   </div>
 </template>
 
-<style scoped>
-.text-success {
-  color: darkgreen;
-}
-.text-error {
-  color: darkred;
-}
-
-.card-margin {
-  margin: v-bind('cardStyles.Margin');
-}
-</style>
+<style scoped></style>
