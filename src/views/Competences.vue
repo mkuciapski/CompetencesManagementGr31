@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, watchEffect } from 'vue'
 //#region GENERAL
 import competences from '@/data/competences'
 //#endregion
@@ -30,7 +30,19 @@ const _showAlert = ref(false)
 watch(_competences.value, (newList, oldList) => {
   console.log(newList, oldList)
   _showAlert.value = true
+  setTimeout(() => (_showAlert.value = false), 1500)
 })
+
+// const _firstLoad = ref(true)
+// watchEffect(() => {
+//   if (JSON.stringify(_competences.value) != '~!@#!#$#' && !_firstLoad.value) {
+//     _showAlert.value = true
+//     setTimeout(() => (_showAlert.value = false), 1500)
+//   }
+
+//   _firstLoad.value = false
+// })
+
 //#endregion
 </script>
 
