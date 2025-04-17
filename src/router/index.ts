@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Competences from '../views/Competences.vue'
-import Lecture from '../views/Lecture.vue'
 import Computed from '../views/Computed.vue'
 import WatchEffect from '../views/WatchEffect.vue'
 import CourseOpinions from '@/views/CourseOpinions.vue'
@@ -17,7 +16,7 @@ const router = createRouter({
     {
       path: '/lecture',
       name: 'lecture',
-      component: Lecture,
+      component: () => import('../views/Lecture.vue'),
     },
     {
       path: '/computed',
