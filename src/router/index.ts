@@ -4,6 +4,7 @@ import Lecture from '../views/Lecture.vue'
 import Computed from '../views/Computed.vue'
 import WatchEffect from '../views/WatchEffect.vue'
 import CourseOpinions from '@/views/CourseOpinions.vue'
+import Events from '@/views/Events.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/courseOpinions',
       name: 'courseOpinions',
       component: CourseOpinions,
+    },
+    {
+      path: '/events',
+      name: 'events',
+      component: Events,
     },
   ],
 })

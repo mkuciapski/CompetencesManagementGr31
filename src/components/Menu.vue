@@ -5,6 +5,7 @@ const _routes = [
   { Path: 'watchEffect', Title: 'watchEffect' },
   { Path: 'computed', Title: 'computed' },
   { Path: 'CourseOpinions', Title: 'Course opinions' },
+  { Path: 'events', Title: 'Events' },
 ]
 </script>
 
